@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/9a0877c9a8f311987bc0f2fa931018dccbb743f5/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d4a13c2c6bebc2afa74eb8d9e572442a7c032666/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_868e75a8075fecd8bd042bb7b810b445612b9fe2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/063ca8e9c8d8fb3f54c1da00beaa6d22a86a9279/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="9935891f23923f39d002087085d9696568a9f657">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f1fe07dca889b8e884e93c48b7a38c358519e14f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/05f22ce92702bd47a79b183758943a177d03ac95/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d20f6e0b986a07ace61a1706bfd86922a09996f1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/b62f7bd213ba0efd87151defc77f35278415ed58/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ee5439f55506dff1381a644ab343fcb3c6df62ee/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/83259d47f3bec22288924d3ad6c6a019f3ecd555/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="cddcd0fb93bc70e27325f2f715b2710332004ebb">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_21d1d7b80c8b8e510fb1c97f1bfff4600cacd94c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="9ef3f724f14441c9d8587f45f955acb170fa089c">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_1c15af2fd26e958d6139c04f5f55e0f4901a5365/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/47f2d59d9ba556af4f59ec1dff8ba1ec93f9f0fd/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9b486f8757ff01ce7f0b9291d837c81f904b9905/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_40c8dad14811b42670f958a396822bb58ec4f91e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/f9db1ba2300796a574930fc4fdb095259bc2ca38/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2cb7cbd92f9607ca13459723e096348ad4be4c04/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/2ad2872cf37ed8f97d1535916bf046d6795987a6/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5eedcbe10198767e9bd91a6e447930b0d0b8db39/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/a551ce132aba384423a8a7501f7026c556113b3a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_10b7f024280eef0966fc50ca7766877de4729043/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/313d4e75cd16d72f778e4082d1bddab02a3c4160/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6a022bf00ccd0948a8180c505e8e458bbddd43a6">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d5892052eee2146a335a2d838f8a567ef829af84/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/26.0.0-alpha1/support-annotations-26.0.0-alpha1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="023ee503b631f69511e335a061ea008f8da60f40">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-26.0.0-alpha1_fead1750e6401ea4550a22f4c0250ca0437430f9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/775faca04f3e2ef29a27d15064de4a2d0d982501/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1c7d8f88c84197247dff505747ecb9a4159dd195/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/040693df8ac97cb7020cdae2e3ddde3bdb02e994/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_df9af3f4106a15061f8b61f62ac9f5cdb87af49d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/balrog/.android/build-cache/0040b824e72d668e5ca83b90b4ad45280b158203/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="952944218ecedea1554a513dec0c14d570642843">
+        <dex dex="/home/balrog/StudioProjects/ChangApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3448bc067094e14339afd6519c7ec7f7b103ee4e/classes.dex" />
+    </item>
+
+</items>
