@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "160174634916",
+    "firebase_url": "https://tdp-changapp.firebaseio.com",
+    "project_id": "tdp-changapp",
+    "storage_bucket": "tdp-changapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160174634916:android:6cfa0d1aa893f8c6",
+        "android_client_info": {
+          "package_name": "ar.uba.fi.changapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160174634916-pvv9rj2ut494e15etocmjvsaffo70k40.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEoP_xpbrilH9BMaO8-1nJpfdDrI2NjKE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
