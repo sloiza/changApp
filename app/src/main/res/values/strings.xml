@@ -14,7 +14,7 @@
   ~ limitations under the License.
   -->
 <resources>
-    <string name="app_name">"Material Design Codelab "</string>
+    <string name="app_name">"ChangApp"</string>
     <string name="action_settings">Settings</string>
     <string name="item_title">Palais Garnier</string>
     <string name="item_desc">The Palais Garnier which locates in Paris was built from 1861 for
@@ -28,4 +28,18 @@
         deserunt mollit anim id est laborum.
     </string>
     <string name="detail_location">"8 Rue Scribe, 75009 Paris, France"</string>
+    <string name="title_activity_login">Iniciar sesion</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (opcional)</string>
+    <string name="action_sign_in">Inicia sesion</string>
+    <string name="action_sign_up">Regristrate</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">La direccion de mail es invalida</string>
+    <string name="error_invalid_password">La contraseña es muy corta</string>
+    <string name="error_incorrect_password">La contraseña es incorrecta</string>
+    <string name="error_field_required">Se requiere este campo</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions." </string>
 </resources>
