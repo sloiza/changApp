@@ -53,9 +53,12 @@
             </intent-filter>
         </activity>
         -->
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".DetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
