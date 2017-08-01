@@ -17,6 +17,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.materialdesigncodelab">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,7 +26,8 @@
 
         <!-- COPY PASTE old project -->
         <activity
-            android:name=".SplashActivity">
+            android:name=".SplashActivity"
+            android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,6 +42,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".SplashActivity" />
         </activity>
+        <activity
+            android:name=".DetailActivity"
+            android:theme="@style/NoActionBarTheme"
+            android:label="@string/title_activity_login"/>
         <!-- End copypaste -->
 
         <!--
@@ -52,15 +58,10 @@
             </intent-filter>
         </activity>
         -->
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/NoActionBarTheme">
         </activity>
-        <activity
-            android:name=".DetailActivity">
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
+
     </application>
 
 </manifest>
