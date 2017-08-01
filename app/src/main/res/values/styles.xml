@@ -20,6 +20,10 @@
         <item name="colorPrimaryDark">#F57C00</item>
         <item name="colorAccent">#536DFE</item>
     </style>
+
+    <style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+
     <style name="AppTheme" parent="AppTheme.Base"></style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
