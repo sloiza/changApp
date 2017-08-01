@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        setupActionBar();
+        //setupActionBar();
 
         mDatabase = FirebaseDatabase.getInstance();
 
@@ -156,7 +156,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-
 
         // Build a GoogleApiClient with access to the Google Sign-In API and the
         // options specified by gso.

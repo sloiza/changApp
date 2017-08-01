@@ -27,7 +27,7 @@
         <!-- COPY PASTE old project -->
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -59,7 +59,7 @@
         </activity>
         -->
         <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/NoActionBarTheme">
         </activity>
 
     </application>
