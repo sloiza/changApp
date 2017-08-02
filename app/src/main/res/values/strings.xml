@@ -34,7 +34,7 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_title">Titulo</string>
     <string name="prompt_description">Descripcion</string>
-    <string name="prompt_password">Password (opcional)</string>
+    <string name="prompt_password">Clave</string>
     <string name="action_sign_in">Inicia sesion</string>
     <string name="action_sign_up">Regristrate</string>
     <string name="action_sign_in_short">Sign in</string>

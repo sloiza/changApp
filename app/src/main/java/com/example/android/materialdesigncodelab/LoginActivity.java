@@ -458,11 +458,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this, "¡Authenticacion fallida!",
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
-                            Toast.makeText(LoginActivity.this, "Authentication SUCCESS!!!.",
+                            Toast.makeText(LoginActivity.this, "¡Autenticacion exitosa!",
                                     Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
