@@ -48,7 +48,12 @@
             android:theme="@style/NoActionBarTheme"
             android:label="@string/label_emailpassword"
             android:windowSoftInputMode="stateAlwaysHidden"
-        />
+            android:parentActivityName=".LoginActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity" />
+        </activity>
         <activity
             android:name=".DetailActivity"
             android:label="@string/title_activity_login"
