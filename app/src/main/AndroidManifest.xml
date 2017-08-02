@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2015 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,11 +12,12 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.materialdesigncodelab">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -49,18 +49,17 @@
         />
         <activity
             android:name=".DetailActivity"
-            android:theme="@style/NoActionBarTheme"
             android:label="@string/title_activity_login"
-            android:parentActivityName=".MainActivity">
-                <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".MainActivity" />
-        </activity>
-
-        <activity android:name=".MainActivity"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/NoActionBarTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
-
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/NoActionBarTheme"></activity>
+        <activity android:name=".AddChanga"></activity>
     </application>
 
 </manifest>
