@@ -35,11 +35,26 @@
                 android:layout_gravity="top"
                 android:orientation="vertical">
 
+                <android.support.design.widget.AppBarLayout
+                    android:id="@+id/appbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:layout_scrollFlags= "scroll|enterAlways"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                </android.support.design.widget.AppBarLayout>
+
                 <ImageButton
                     android:id="@+id/img_changa"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/a" />
+                    android:layout_height="250dp"
+                    app:srcCompat="@drawable/garden" />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -68,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/prompt_description"
                         android:imeOptions="actionUnspecified"
-                        android:inputType="textPassword"
+                        android:inputType="textLongMessage"
                         android:maxLines="1" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -85,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:hint="$"
                         android:imeOptions="actionUnspecified"
-                        android:inputType="textPassword"
+                        android:inputType="number|numberDecimal"
                         android:maxLines="1" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -107,6 +122,7 @@
                     style="?android:textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="#FF9800"

@@ -61,7 +61,7 @@
             android:theme="@style/NoActionBarTheme"></activity>
         <activity android:name=".AddChanga"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/NoActionBarTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />></activity>
