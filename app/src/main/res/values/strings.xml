@@ -32,14 +32,22 @@
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
+    <string name="prompt_title">Titulo</string>
+    <string name="prompt_description">Descripcion</string>
     <string name="prompt_password">Password (opcional)</string>
     <string name="action_sign_in">Inicia sesion</string>
     <string name="action_sign_up">Regristrate</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="action_add_changa">Agregar Changa</string>
     <string name="error_invalid_email">La direccion de mail es invalida</string>
     <string name="error_invalid_password">La contraseña es muy corta</string>
     <string name="error_incorrect_password">La contraseña es incorrecta</string>
     <string name="error_field_required">Se requiere este campo</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions." </string>
+    <string-array name="array_categories">
+        <item>Limpieza</item>
+        <item>Hogar</item>
+        <item>Refaccion</item>
+    </string-array>
 </resources>

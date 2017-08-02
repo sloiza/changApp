@@ -16,6 +16,7 @@
 
 package com.example.android.materialdesigncodelab;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -95,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Snackbar.make(v, "Hello Snackbar!",
                         Snackbar.LENGTH_LONG).show();
+                Intent addChanga = new Intent(MainActivity.this,AddChanga.class);
+                startActivity(addChanga);
             }
         });
     }
