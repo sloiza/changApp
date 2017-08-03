@@ -36,6 +36,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,9 +81,38 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         // Set item in checked state
-                        menuItem.setChecked(true);
 
-                        // TODO: handle navigation
+                        int id = menuItem.getItemId();
+
+                        switch (id) {
+                            case R.id.nav_verPerfil:
+                                menuItem.setChecked(true);
+                                Toast.makeText(MainActivity.this, "Ver perfil",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.nav_changas:
+                                menuItem.setChecked(true);
+                                Toast.makeText(MainActivity.this, "Changas",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.nav_changasActivas:
+                                Toast.makeText(MainActivity.this, "Changas Activas",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.nav_postulacionesActivas:
+                                Toast.makeText(MainActivity.this, "Postulaciones Activas",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.nav_changasFinalizadas:
+                                Toast.makeText(MainActivity.this, "Changas Finalizadas",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.nav_cerrarSesion:
+                                menuItem.setChecked(true);
+                                Toast.makeText(MainActivity.this, "Cerrar sesion",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                        }
 
                         // Closing drawer on item click
                         mDrawerLayout.closeDrawers();
