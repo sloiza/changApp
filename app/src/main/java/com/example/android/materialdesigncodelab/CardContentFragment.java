@@ -26,6 +26,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,18 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Provides UI for the view with Cards.
@@ -106,21 +118,56 @@ public class CardContentFragment extends Fragment {
      * Adapter to display recycler view.
      */
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-        // Set numbers of Card in RecyclerView.
-        private static final int LENGTH = 18;
+        private DatabaseReference mChangasReference;
 
-        private final String[] mPlaces;
-        private final String[] mPlaceDesc;
-        private final Drawable[] mPlacePictures;
+        private static int LENGTH = 0;
+
+        private static String[] mChangasTitle;
+        private static String[] mChangasDescription;
+        private static Integer[] mChangasCategory;
+        private final Drawable[] mChangasPictures;
 
         public ContentAdapter(Context context) {
+            mChangasReference = FirebaseDatabase.getInstance().getReference("changas");
+            ValueEventListener changaListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    LENGTH = (int)dataSnapshot.getChildrenCount();
+                    mChangasTitle = new String[LENGTH];
+                    mChangasDescription = new String[LENGTH];
+                    mChangasCategory = new Integer[LENGTH];
+
+                    List<String> titles = new ArrayList<String>();
+                    List<String> descriptions = new ArrayList<String>();
+                    List<Integer> categories = new ArrayList<Integer>();
+
+                    for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
+                        Changa changa = changaSnapshot.getValue(Changa.class);
+                        titles.add(changa.title);
+                        descriptions.add(changa.body);
+                        categories.add(changa.category);
+                    }
+                    titles.toArray(mChangasTitle);
+                    descriptions.toArray(mChangasDescription);
+                    categories.toArray(mChangasCategory);
+                    notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Getting Post failed, log a message
+                    Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                    // ...
+                }
+            };
+            mChangasReference.addValueEventListener(changaListener);
+
+
             Resources resources = context.getResources();
-            mPlaces = resources.getStringArray(R.array.places);
-            mPlaceDesc = resources.getStringArray(R.array.place_desc);
-            TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-            mPlacePictures = new Drawable[a.length()];
-            for (int i = 0; i < mPlacePictures.length; i++) {
-                mPlacePictures[i] = a.getDrawable(i);
+            TypedArray a = resources.obtainTypedArray(R.array.changas_imgs);
+            mChangasPictures = new Drawable[a.length()];
+            for (int i = 0; i < mChangasPictures.length; i++) {
+                mChangasPictures[i] = a.getDrawable(i);
             }
             a.recycle();
         }
@@ -132,9 +179,10 @@ public class CardContentFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.picture.setImageDrawable(mPlacePictures[position % mPlacePictures.length]);
-            holder.name.setText(mPlaces[position % mPlaces.length]);
-            holder.description.setText(mPlaceDesc[position % mPlaceDesc.length]);
+            int nPos = LENGTH-position-1;
+            holder.picture.setImageDrawable(mChangasPictures[mChangasCategory[nPos]]);
+            holder.name.setText(mChangasTitle[nPos]);
+            holder.description.setText(mChangasDescription[nPos]);
         }
 
         @Override

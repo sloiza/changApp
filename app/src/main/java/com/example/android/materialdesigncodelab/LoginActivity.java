@@ -98,6 +98,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         //setupActionBar();
+/*        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+
+*/
+
+
+
+
+
+
 
         //UserModel user = new UserModel("sima@sami", "abc", "qwerty@sami", "414141", "125631", "/path/Image");
         //user.writeNewUser(user);
