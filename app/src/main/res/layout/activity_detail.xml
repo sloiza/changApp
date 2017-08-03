@@ -75,10 +75,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/md_keylines"
+                android:text="Descripcion"
                 android:textColor="?attr/colorAccent"
-                android:text="Description"
-                android:textSize="@dimen/article_titles"
-                android:layout_marginBottom="@dimen/md_keylines" />
+                android:textSize="@dimen/article_titles" />
 
             <TextView
                 android:id="@+id/place_detail"
@@ -89,11 +89,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="?attr/colorAccent"
-                android:text="Location"
-                android:textSize="@dimen/article_titles"
                 android:layout_marginBottom="@dimen/md_keylines"
-                android:layout_marginTop="@dimen/md_keylines" />
+                android:layout_marginTop="@dimen/md_keylines"
+                android:text="Autor"
+                android:textColor="?attr/colorAccent"
+                android:textSize="@dimen/article_titles" />
 
             <TextView
                 android:id="@+id/place_location"

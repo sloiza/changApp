@@ -59,8 +59,7 @@
                 android:value=".LoginActivity" />
         </activity>
         <activity
-            android:name=".DetailActivity"
-            android:label="@string/title_activity_login"
+            android:name=".DetailActivity2"
             android:parentActivityName=".MainActivity"
             android:theme="@style/NoActionBarTheme">
             <meta-data

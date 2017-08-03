@@ -46,6 +46,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
+import static com.example.android.materialdesigncodelab.CardContentFragment.ContentAdapter.LENGTH;
+import static com.example.android.materialdesigncodelab.CardContentFragment.ContentAdapter.mIDS;
 
 /**
  * Provides UI for the view with Cards.
@@ -77,8 +79,11 @@ public class CardContentFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, DetailActivity.class);
-                    intent.putExtra(DetailActivity.EXTRA_POSITION, getAdapterPosition());
+                    int nPos = LENGTH-getAdapterPosition()-1;
+                    String idChanga = mIDS[nPos];
+
+                    Intent intent = new Intent(context, DetailActivity2.class);
+                    intent.putExtra(DetailActivity2.EXTRA_POSITION, idChanga);
                     context.startActivity(intent);
                 }
             });
@@ -120,8 +125,9 @@ public class CardContentFragment extends Fragment {
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         private DatabaseReference mChangasReference;
 
-        private static int LENGTH = 0;
+        public static int LENGTH = 0;
 
+        public static  String[] mIDS;
         private static String[] mChangasTitle;
         private static String[] mChangasDescription;
         private static Integer[] mChangasCategory;
@@ -133,20 +139,24 @@ public class CardContentFragment extends Fragment {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     LENGTH = (int)dataSnapshot.getChildrenCount();
+                    mIDS = new String[LENGTH];
                     mChangasTitle = new String[LENGTH];
                     mChangasDescription = new String[LENGTH];
                     mChangasCategory = new Integer[LENGTH];
 
+                    List<String> ids = new ArrayList<String>();
                     List<String> titles = new ArrayList<String>();
                     List<String> descriptions = new ArrayList<String>();
                     List<Integer> categories = new ArrayList<Integer>();
 
                     for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
                         Changa changa = changaSnapshot.getValue(Changa.class);
+                        ids.add(changa.id);
                         titles.add(changa.title);
                         descriptions.add(changa.body);
                         categories.add(changa.category);
                     }
+                    ids.toArray(mIDS);
                     titles.toArray(mChangasTitle);
                     descriptions.toArray(mChangasDescription);
                     categories.toArray(mChangasCategory);
