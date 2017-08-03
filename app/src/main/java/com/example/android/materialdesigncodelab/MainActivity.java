@@ -86,12 +86,14 @@ public class MainActivity extends AppCompatActivity {
 
                         switch (id) {
                             case R.id.nav_verPerfil:
-                                menuItem.setChecked(true);
+                                //menuItem.setChecked(true);
                                 Toast.makeText(MainActivity.this, "Ver perfil",
                                         Toast.LENGTH_SHORT).show();
+                                Intent verPerfil = new Intent(MainActivity.this,PerfilActivity.class);
+                                startActivity(verPerfil);
                                 break;
                             case R.id.nav_changas:
-                                menuItem.setChecked(true);
+                                //menuItem.setChecked(true);
                                 Toast.makeText(MainActivity.this, "Changas",
                                         Toast.LENGTH_SHORT).show();
                                 break;
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.nav_cerrarSesion:
-                                menuItem.setChecked(true);
+                                //menuItem.setChecked(true);
                                 Toast.makeText(MainActivity.this, "Cerrar sesion",
                                         Toast.LENGTH_SHORT).show();
                                 break;

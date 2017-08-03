@@ -74,6 +74,10 @@
                 android:value=".MainActivity" />
             >
         </activity>
+        <activity
+            android:name=".PerfilActivity"
+            android:label="@string/title_activity_perfil"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
