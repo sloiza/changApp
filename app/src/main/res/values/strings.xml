@@ -124,8 +124,15 @@
     <string name="email_fmt">Email: %s</string>
 
     <string-array name="array_categories">
-        <item>Limpieza</item>
-        <item>Hogar</item>
-        <item>Refaccion</item>
+        <item>Jardineria</item>
+        <item>Construccion</item>
+        <item>Arreglos Caseros</item>
+        <item>Amo de casa</item>
+        <item>Mascotas</item>
+        <item>Ocio</item>
+        <item>Cocina</item>
+        <item>Flete</item>
+        <item>Computacion</item>
+        <item>Otros</item>
     </string-array>
 </resources>

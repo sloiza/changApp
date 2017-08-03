@@ -20,7 +20,7 @@ public class Changa {
     public String price;
     public String date;
     public String picture;
-    public String category;
+    public int category;
 
     public int starCount = 0;
     public Map<String, Boolean> stars = new HashMap<>();
@@ -30,7 +30,7 @@ public class Changa {
     }
 
     public Changa(String id, String uid, String author, String title, String body, String price,
-                            String date, String picture, String category) {
+                            String date, String picture, int category) {
         this.id = id;
         this.uid = uid;
         this.author = author;
