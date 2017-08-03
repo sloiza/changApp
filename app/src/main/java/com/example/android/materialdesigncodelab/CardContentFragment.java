@@ -133,7 +133,6 @@ public class CardContentFragment extends Fragment {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     LENGTH = (int)dataSnapshot.getChildrenCount();
-                    System.out.println("LENGTH NUEVO: "+LENGTH);
                     mChangasTitle = new String[LENGTH];
                     mChangasDescription = new String[LENGTH];
                     mChangasCategory = new Integer[LENGTH];

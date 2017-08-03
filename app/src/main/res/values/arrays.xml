@@ -25,15 +25,15 @@
     </string-array>
     <string-array name="changas_imgs">
         <item>@drawable/jardineria</item>
-        <item>@drawable/a</item>
-        <item>@drawable/b</item>
-        <item>@drawable/c</item>
-        <item>@drawable/d</item>
-        <item>@drawable/e</item>
-        <item>@drawable/f</item>
-        <item>@drawable/a</item>
-        <item>@drawable/a</item>
-        <item>@drawable/a</item>
+        <item>@drawable/construccion</item>
+        <item>@drawable/arreglos_caseros</item>
+        <item>@drawable/amo_de_casa</item>
+        <item>@drawable/mascotas</item>
+        <item>@drawable/ocio</item>
+        <item>@drawable/cocina</item>
+        <item>@drawable/flete</item>
+        <item>@drawable/computacion</item>
+        <item>@drawable/otros</item>-->
     </string-array>
     <string-array name="place_desc">
         <item>The Palais Garnier which locates in Paris was built from 1861 for
