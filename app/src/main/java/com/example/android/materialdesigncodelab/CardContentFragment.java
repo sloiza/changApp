@@ -70,7 +70,7 @@ public class CardContentFragment extends Fragment {
         public TextView description;
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.item_card, parent, false));
-            //picture = (ImageView) itemView.findViewById(R.id.card_image);
+            picture = (ImageView) itemView.findViewById(R.id.card_image);
             name = (TextView) itemView.findViewById(R.id.card_title);
             description = (TextView) itemView.findViewById(R.id.card_text);
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -120,11 +120,16 @@ public class CardContentFragment extends Fragment {
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         private DatabaseReference mChangasReference;
 
-        private static int LENGTH = 0;
+        private static int LENGTH = 2;
 
         private String[] mChangasTitle = new String[25];
         private String[] mChangasDescription = new String[25];
         private Drawable[] mChangasPictures;
+
+        private final String[] mPlaces;
+        private final String[] mPlaceDesc;
+        private final Drawable[] mPlaceAvators;
+
 
         public ContentAdapter(Context context) {
             mChangasReference = FirebaseDatabase.getInstance().getReference("changas");
@@ -132,6 +137,7 @@ public class CardContentFragment extends Fragment {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     LENGTH = (int)dataSnapshot.getChildrenCount();
+                    System.out.println("LENGTH NUEVO: "+LENGTH);
                     mChangasTitle = new String[LENGTH];
                     mChangasDescription = new String[LENGTH];
 
@@ -145,6 +151,7 @@ public class CardContentFragment extends Fragment {
                     }
                     titles.toArray(mChangasTitle);
                     descriptions.toArray(mChangasDescription);
+                    notifyDataSetChanged();
                 }
 
                 @Override
@@ -156,19 +163,16 @@ public class CardContentFragment extends Fragment {
             };
             mChangasReference.addValueEventListener(changaListener);
 
-            Resources resources = context.getResources();
-            TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-            a.recycle();
 
-            /*Resources resources = context.getResources();
-            mChangasTitle = resources.getStringArray(R.array.places);
-            mChangasDescription = resources.getStringArray(R.array.place_desc);
+            Resources resources = context.getResources();
+            mPlaces = resources.getStringArray(R.array.places);
+            mPlaceDesc = resources.getStringArray(R.array.place_desc);
             TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-            mChangasPictures = new Drawable[a.length()];
-            for (int i = 0; i < mChangasPictures.length; i++) {
-                mChangasPictures[i] = a.getDrawable(i);
+            mPlaceAvators = new Drawable[a.length()];
+            for (int i = 0; i < mPlaceAvators.length; i++) {
+                mPlaceAvators[i] = a.getDrawable(i);
             }
-            a.recycle();*/
+            a.recycle();
         }
 
         @Override
@@ -178,9 +182,9 @@ public class CardContentFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.picture.setImageDrawable(mChangasPictures[position % mChangasPictures.length]);
-            holder.name.setText(mChangasTitle[position % mChangasTitle.length]);
-            holder.description.setText(mChangasDescription[position % mChangasDescription.length]);
+            holder.picture.setImageDrawable(mPlaceAvators[position]);
+            holder.name.setText(mChangasTitle[position]);
+            holder.description.setText(mChangasDescription[position]);
         }
 
         @Override
