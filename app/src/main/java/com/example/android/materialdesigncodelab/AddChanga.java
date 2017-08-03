@@ -29,8 +29,11 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.android.materialdesigncodelab.Models.UserModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -155,7 +158,9 @@ public class AddChanga extends AppCompatActivity {
         */
 
         String key = mDatabase.child("Changas").push().getKey();
-        Changa changa = new Changa(key, "uid", "nicolas", title, description, price, "today", "jardineria", mAddCategory.getSelectedItemPosition());
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        UserModel currentUser = (new UserModel()).getUserById(userId);
+        Changa changa = new Changa(key, userId, currentUser.name, title, description, price, "", "", mAddCategory.getSelectedItemPosition());
         Map<String, Object> changaValues = changa.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();

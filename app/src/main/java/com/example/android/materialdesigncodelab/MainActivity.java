@@ -96,18 +96,26 @@ public class MainActivity extends AppCompatActivity {
                                 //menuItem.setChecked(true);
                                 Toast.makeText(MainActivity.this, "Changas",
                                         Toast.LENGTH_SHORT).show();
+                                Intent allChangas = new Intent(MainActivity.this,ChangasActivasActivity.class);
+                                startActivity(allChangas);
                                 break;
                             case R.id.nav_changasActivas:
                                 Toast.makeText(MainActivity.this, "Changas Activas",
                                         Toast.LENGTH_SHORT).show();
+                                Intent changasActivas = new Intent(MainActivity.this,ChangasActivasActivity.class);
+                                startActivity(changasActivas);
                                 break;
                             case R.id.nav_postulacionesActivas:
                                 Toast.makeText(MainActivity.this, "Postulaciones Activas",
                                         Toast.LENGTH_SHORT).show();
+                                Intent postulacionesActivas = new Intent(MainActivity.this,ChangasActivasActivity.class);
+                                startActivity(postulacionesActivas);
                                 break;
                             case R.id.nav_changasFinalizadas:
                                 Toast.makeText(MainActivity.this, "Changas Finalizadas",
                                         Toast.LENGTH_SHORT).show();
+                                Intent changasFinalizadas = new Intent(MainActivity.this,ChangasActivasActivity.class);
+                                startActivity(changasFinalizadas);
                                 break;
                             case R.id.nav_cerrarSesion:
                                 //menuItem.setChecked(true);
