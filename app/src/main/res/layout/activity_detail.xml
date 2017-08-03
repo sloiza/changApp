@@ -68,9 +68,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingLeft="@dimen/article_keylines"
-            android:paddingRight="@dimen/md_keylines"
-            android:paddingTop="@dimen/md_keylines">
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/md_keylines"
+                android:layout_marginTop="@dimen/md_keylines"
+                android:text="Categoria"
+                android:textColor="?attr/colorAccent"
+                android:textSize="@dimen/article_titles" />
+
+            <TextView
+                android:id="@+id/categoria_changa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                tools:text="@string/detail_location" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -84,7 +101,7 @@
                 android:id="@+id/place_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@string/detail_desc" />
+                tools:text="Lorem ipsum..." />
 
             <TextView
                 android:layout_width="match_parent"
@@ -99,7 +116,19 @@
                 android:id="@+id/place_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@string/detail_location" />
+                android:layout_marginBottom="10dp"
+                tools:text="Un changero" />
+
+            <Button
+                android:id="@+id/ok_apply_changa"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="#FF9800"
+                android:text="POSTULAR"
+                android:textStyle="bold" />
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

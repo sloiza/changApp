@@ -1,5 +1,6 @@
 package com.example.android.materialdesigncodelab;
 
+import com.example.android.materialdesigncodelab.Models.UserModel;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -21,6 +22,7 @@ public class Changa {
     public String date;
     public String picture;
     public int category;
+    public Map<String, Object> postulantes;
 
     public int starCount = 0;
     public Map<String, Boolean> stars = new HashMap<>();
@@ -59,5 +61,4 @@ public class Changa {
 
         return result;
     }
-
 }
