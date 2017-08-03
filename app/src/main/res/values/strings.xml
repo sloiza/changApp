@@ -77,14 +77,14 @@
     <string name="sign_out">Sign Out</string>
     <string name="verify_email">Verify Email</string>
     <string name="disconnect">Disconnect</string>
-    <string name="loading">Loading…</string>
+    <string name="loading">Cargando…</string>
     <string name="custom_token">Custom Token</string>
     <string name="signed_in">Signed In</string>
     <string name="signed_out">Signed Out</string>
     <string name="token_null">Token: null</string>
     <string name="hint_email">Email</string>
-    <string name="hint_name">Name</string>
-    <string name="hint_description">Description</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_description">Descripcion</string>
     <string name="hint_phone">Telefono</string>
     <string name="hint_password">Password</string>
     <string name="desc_firebase_lockup">Firebase logo and name</string>
@@ -135,4 +135,19 @@
         <item>Computacion</item>
         <item>Otros</item>
     </string-array>
+    <string name="title_activity_perfil">Tu perfil</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+    </string>
 </resources>

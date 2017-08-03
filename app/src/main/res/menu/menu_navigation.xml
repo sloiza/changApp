@@ -16,16 +16,46 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:icon="@drawable/ic_home_black_24dp"
+            android:id="@+id/nav_verPerfil"
+            android:icon="@drawable/ic_perm_identity_black_24dp"
             android:tint="@color/button_grey"
-            android:title="One" />
+            android:title="Ver Perfil" />
         <item
-            android:icon="@drawable/ic_favorite_black_24dp"
+            android:id="@+id/nav_changas"
+            android:icon="@drawable/ic_format_paint_black_24dp"
             android:tint="@color/button_grey"
-            android:title="Two" />
+            android:title="Changas" />
+
         <item
-            android:icon="@drawable/ic_bookmark_border_black_24dp"
+            android:id="@+id/nav_cerrarSesion"
+            android:icon="@drawable/ic_power_settings_new_black_24dp"
             android:tint="@color/button_grey"
-            android:title="Three" />
+            android:title="Cerrar sesion" />
+
     </group>
+
+    <item android:title="Emplear">
+        <menu>
+            <item
+                android:id="@+id/nav_changasActivas"
+                android:icon="@drawable/ic_bookmark_border_black_24dp"
+                android:tint="@color/button_grey"
+                android:title="Changas activas" />
+        </menu>
+    </item>
+
+    <item android:title="Postular">
+        <menu>
+            <item
+                android:id="@+id/nav_postulacionesActivas"
+                android:icon="@drawable/ic_bookmark_border_black_24dp"
+                android:tint="@color/button_grey"
+                android:title="Postulaciones activas" />
+            <item
+                android:id="@+id/nav_changasFinalizadas"
+                android:icon="@drawable/ic_transfer_within_a_station_black_24dp"
+                android:tint="@color/button_grey"
+                android:title="Changas finalizadas" />
+        </menu>
+    </item>
 </menu>

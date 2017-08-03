@@ -42,19 +42,18 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/NoActionBarTheme"
-            android:parentActivityName=".SplashActivity">
+            android:parentActivityName=".SplashActivity"
+            android:theme="@style/NoActionBarTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".SplashActivity" />
         </activity>
         <activity
             android:name=".SignupActivity"
-            android:theme="@style/NoActionBarTheme"
             android:label="@string/label_emailpassword"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:parentActivityName=".LoginActivity">
-
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/NoActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity" />
@@ -70,13 +69,20 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/NoActionBarTheme"></activity>
-        <activity android:name=".AddChanga"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".AddChanga"
             android:parentActivityName=".MainActivity"
             android:theme="@style/NoActionBarTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />></activity>
+                android:value=".MainActivity" />
+            >
+        </activity>
+        <activity
+            android:name=".PerfilActivity"
+            android:label="@string/title_activity_perfil"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
