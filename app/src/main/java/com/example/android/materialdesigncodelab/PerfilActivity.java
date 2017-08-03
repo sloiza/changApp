@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.materialdesigncodelab.Models.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,22 +26,28 @@ public class PerfilActivity extends AppCompatActivity {
         String name = "";
         String email = "";
         String description = "";
+        String phone =  "";
+        String photo = "";
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        // TODO: Name currentUser
-        // TODO: Description currentUser
-        // TODO: Email currentUser
-        if (user != null) {
+        UserModel currentUser = (new UserModel()).getUserById(user.getUid());
+
+        if (currentUser != null) {
+            System.out.println("Hay currentUser");
             // Name, email address, and profile photo Url
-            name = user.getDisplayName();
-            email = user.getEmail();
-            //description = user.getPhotoUrl();
+            String uid = currentUser.uid;
+            name = currentUser.name;
+            email = currentUser.email;
+            description = currentUser.description;
+            phone = currentUser.phone;
+            photo = currentUser.photo;
 
             // The user's ID, unique to the Firebase project. Do NOT use this value to
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getToken() instead.
-            String uid = user.getUid();
+            //          uid = user.getUid();
         } else {
+            System.out.println("No hay currentUser");
             //name = R.string.firebase_user_management;
             //email = R.string.emailpassword_status_fmt;
         }

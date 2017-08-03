@@ -99,8 +99,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
         //setupActionBar();
 
-        UserModel user = new UserModel("4", "sami", "sami@sami", "lala", "125631", "/path");
-        user.writeNewUser(user);
+        //UserModel user = new UserModel("sima@sami", "abc", "qwerty@sami", "414141", "125631", "/path/Image");
+        //user.writeNewUser(user);
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -442,6 +443,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
                             Toast.makeText(LoginActivity.this, "¡Autenticacion exitosa!",
                                     Toast.LENGTH_SHORT).show();
+
+                            // Add user
+                            FirebaseUser userFirebase = FirebaseAuth.getInstance().getCurrentUser();
+                            UserModel user = new UserModel( userFirebase.getEmail(),
+                                                            userFirebase.getDisplayName(),
+                                                            userFirebase.getEmail(),
+                                                            "",
+                                                            userFirebase.getPhoneNumber(),
+                                                            userFirebase.getPhotoUrl().toString());
+                            user.writeNewUser(user);
+
+
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
