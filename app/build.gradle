@@ -45,6 +45,8 @@ dependencies {
     // Dependency for Firebase Storage
     compile 'com.google.firebase:firebase-storage:11.0.1'
 
+    compile 'com.squareup.picasso:picasso:2.5.0'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

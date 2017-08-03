@@ -13,6 +13,9 @@ import android.widget.TextView;
 import com.example.android.materialdesigncodelab.Models.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
+
+import java.net.URI;
 
 public class PerfilActivity extends AppCompatActivity {
 
@@ -52,8 +55,8 @@ public class PerfilActivity extends AppCompatActivity {
             //email = R.string.emailpassword_status_fmt;
         }
 
-        //ImageView picture = (ImageView) findViewById(R.id.app_bar);
-        //picture.setBackground(R.drawable.garden);
+        ImageView picture = (ImageView) findViewById(R.id.imageperson);
+        Picasso.with(this).load(photo).into(picture);
         TextView textName = (TextView) findViewById(R.id.perfil_name);
         textName.setText(name);
         TextView textDescription= (TextView) findViewById(R.id.perfil_descripcion);
