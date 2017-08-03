@@ -179,9 +179,10 @@ public class CardContentFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.picture.setImageDrawable(mChangasPictures[mChangasCategory[position]]);
-            holder.name.setText(mChangasTitle[position]);
-            holder.description.setText(mChangasDescription[position]);
+            int nPos = LENGTH-position-1;
+            holder.picture.setImageDrawable(mChangasPictures[mChangasCategory[nPos]]);
+            holder.name.setText(mChangasTitle[nPos]);
+            holder.description.setText(mChangasDescription[nPos]);
         }
 
         @Override
