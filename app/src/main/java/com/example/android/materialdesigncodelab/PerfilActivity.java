@@ -25,18 +25,32 @@ public class PerfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_perfil);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+/*
         String name = "";
         String email = "";
         String description = "";
         String phone =  "";
         String photo = "";
-
+*/
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        UserModel currentUser = (new UserModel()).getUserById(user.getUid());
+        System.out.println(" ======= CURRENT USER ======");
+        System.out.println(user.getEmail());
+        System.out.println(user.getDisplayName());
+        System.out.println(user.getPhotoUrl());
+        /*UserModel currentUser = (new UserModel()).getUserById(user.getUid()); //TODO traer de bdd con toda la data del autenticado
+        System.out.println("============ Current user =========");
 
-        if (currentUser != null) {
-            System.out.println("Hay currentUser");
+        FirebaseUser userFirebase = FirebaseAuth.getInstance().getCurrentUser();
+        UserModel user = new UserModel( userFirebase.getEmail(),
+                userFirebase.getDisplayName(),
+                userFirebase.getEmail(),
+                "",
+                userFirebase.getPhoneNumber(),
+                userFirebase.getPhotoUrl().toString());
+
+        System.out.println(currentUser.toString());*/
+        /*if (currentUser != null) {
+            System.out.println("============ Hay currentUser ==========");
             // Name, email address, and profile photo Url
             String uid = currentUser.uid;
             name = currentUser.name;
@@ -51,18 +65,23 @@ public class PerfilActivity extends AppCompatActivity {
             //          uid = user.getUid();
         } else {
             System.out.println("No hay currentUser");
+            return;
             //name = R.string.firebase_user_management;
             //email = R.string.emailpassword_status_fmt;
-        }
-
+        }*/
+System.out.println("============ Cargar perfil =========");
+        System.out.println(user.getDisplayName());
+        System.out.println(user.getEmail());
+        System.out.println(user.getPhotoUrl());
+        System.out.println("============ Current user =========");
         ImageView picture = (ImageView) findViewById(R.id.imageperson);
-        Picasso.with(this).load(photo).into(picture);
+        Picasso.with(this).load(user.getPhotoUrl()).into(picture); //Todo si no hay photo de perfil default
         TextView textName = (TextView) findViewById(R.id.perfil_name);
-        textName.setText(name);
+        textName.setText(user.getDisplayName());
         TextView textDescription= (TextView) findViewById(R.id.perfil_descripcion);
-        textDescription.setText(description);
+        textDescription.setText("lala"); //// TODO: sacar de base d datos
         TextView textEmail = (TextView) findViewById(R.id.perfil_email);
-        textEmail.setText(email);
+        textEmail.setText(user.getEmail());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
