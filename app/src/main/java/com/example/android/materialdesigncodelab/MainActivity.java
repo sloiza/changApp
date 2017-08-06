@@ -127,22 +127,9 @@ public class MainActivity extends AppCompatActivity {
                                 System.out.println("========== SIGN OUT =========");
                                 Toast.makeText(MainActivity.this, "Cerrar sesion",
                                         Toast.LENGTH_SHORT).show();
-                                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                                mAuth.signOut();
-
-                                // this listener will be called when there is change in firebase user session
-                                FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
-                                    @Override
-                                    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                                        FirebaseUser user = firebaseAuth.getCurrentUser();
-                                        if (user == null) {
-                                            // user auth state is changed - user is null
-                                            // launch login activity
-                                            Intent cerrarSesion = new Intent(MainActivity.this,LoginActivity.class);
-                                            startActivity(cerrarSesion);
-                                        }
-                                    }
-                                };
+                                FirebaseAuth.getInstance().signOut();
+                                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                                finish();
                                 break;
                         }
 
