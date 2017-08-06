@@ -98,11 +98,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         //setupActionBar();
-/*        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
-
-*/
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -304,8 +299,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             showProgress(true);
                             //progressBar.setVisibility(View.GONE);
                             if (!task.isSuccessful()) {
-                                System.out.println(task.getResult().toString());
-                                System.out.println(task.getResult().getUser().toString());
+                                //System.out.println(task.getResult().toString());
+                                //System.out.println(task.getResult().getUser().toString());
+                                System.out.println("SIGN IN FAILS");
+                                Toast.makeText(LoginActivity.this, "Sign In failed!",
+                                        Toast.LENGTH_SHORT).show();
+                                showProgress(false);
+                                startActivity(new Intent(LoginActivity.this,LoginActivity.class));
+                                finish();
                             } else {
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);

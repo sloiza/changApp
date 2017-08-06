@@ -15,7 +15,6 @@ package com.example.android.materialdesigncodelab;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
@@ -243,6 +242,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         int i = v.getId();
         if (i == R.id.email_create_account_button) {
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString(), mNameField.getText().toString(), mDescriptionField.getText().toString());
+
         } else if (i == R.id.email_sign_in_button) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
         }
