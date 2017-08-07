@@ -36,7 +36,7 @@ public class PerfilActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child("users").child(user.getUid());
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child(user.getUid());
         ValueEventListener eventListener = new ValueEventListener() {
 
             @Override

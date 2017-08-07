@@ -56,13 +56,13 @@ public class UserModel {
      * User data change listener
      */
     public void writeNewUser() {
-        DatabaseReference dataUsers = usersReference.child("users");
+       // DatabaseReference dataUsers = usersReference.child("users");
         FirebaseUser userFirebase = FirebaseAuth.getInstance().getCurrentUser();
         uid = userFirebase.getUid();
-        dataUsers.child(uid).setValue(new UserModel(uid,name,email,description,phone,photo));
+        usersReference.child(uid).setValue(new UserModel(uid,name,email,description,phone,photo));
 
         // User data change listener
-        dataUsers.child(uid).addValueEventListener(new ValueEventListener() {
+        usersReference.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UserModel user = dataSnapshot.getValue(UserModel.class);

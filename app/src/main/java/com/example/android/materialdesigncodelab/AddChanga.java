@@ -163,7 +163,7 @@ public class AddChanga extends AppCompatActivity {
         final String key = mDatabase.child("Changas").push().getKey();
         final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         //final UserModel currentUser = (new UserModel()).getUserById(userId);
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child("users").child(userId);
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child(userId);
         ValueEventListener eventListener = new ValueEventListener() {
 
             @Override

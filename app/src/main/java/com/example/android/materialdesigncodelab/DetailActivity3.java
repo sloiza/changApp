@@ -95,7 +95,7 @@ public class DetailActivity3 extends AppCompatActivity {
                         placeLocation.setText(changaSnapshot.getValue(Changa.class).author);
                         changaCategory = changaSnapshot.getValue(Changa.class).category;
                         for(final DataSnapshot postulante : changaSnapshot.child("postulantes").getChildren()) {
-                            DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child("users").child(postulante.getKey());
+                            DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child(postulante.getKey());
                             ValueEventListener eventListener = new ValueEventListener() {
 
                                 @Override
