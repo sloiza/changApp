@@ -94,8 +94,26 @@ public class DetailActivity3 extends AppCompatActivity {
                         placeDetail.setText(changaSnapshot.getValue(Changa.class).body);
                         placeLocation.setText(changaSnapshot.getValue(Changa.class).author);
                         changaCategory = changaSnapshot.getValue(Changa.class).category;
-                        for(DataSnapshot postulante : changaSnapshot.child("postulantes").getChildren()) {
-                            postulantes.setText((new UserModel()).getUserById(postulante.getKey()).name);
+                        for(final DataSnapshot postulante : changaSnapshot.child("postulantes").getChildren()) {
+                            DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child("users").child(postulante.getKey());
+                            ValueEventListener eventListener = new ValueEventListener() {
+
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    UserModel userM = dataSnapshot.getValue(UserModel.class);
+                                    postulantes.setText(userM.name);
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError error) {
+                                    // Failed to read value
+                                    System.out.println("!!!!!!!! Failed to read user:"+ error.toException());
+                                }
+                            };
+                            database.addValueEventListener(eventListener);
+
+
                         }
                         placeImage.setImageDrawable(changasImgs[changaCategory]);
 

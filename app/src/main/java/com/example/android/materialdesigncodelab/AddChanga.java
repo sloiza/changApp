@@ -34,8 +34,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -121,13 +124,13 @@ public class AddChanga extends AppCompatActivity {
 
     private void writeNewChanga() {
         AutoCompleteTextView add_title = (AutoCompleteTextView) findViewById(R.id.add_changa_title);
-        String title = add_title.getText().toString();
+        final String title = add_title.getText().toString();
 
         EditText add_description = (EditText) findViewById(R.id.add_changa_description);
-        String description = add_description.getText().toString();
+        final String description = add_description.getText().toString();
 
         EditText add_cost = (EditText) findViewById(R.id.add_changa_costo);
-        String price = add_cost.getText().toString();
+        final String price = add_cost.getText().toString();
 
         /*
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -157,17 +160,34 @@ public class AddChanga extends AppCompatActivity {
         Bitmap image = ((BitmapDrawable)add_image.getDrawable()).getBitmap();
         */
 
-        String key = mDatabase.child("Changas").push().getKey();
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        UserModel currentUser = (new UserModel()).getUserById(userId);
-        Changa changa = new Changa(key, userId, currentUser.name, title, description, price, "", "", mAddCategory.getSelectedItemPosition());
-        Map<String, Object> changaValues = changa.toMap();
+        final String key = mDatabase.child("Changas").push().getKey();
+        final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        //final UserModel currentUser = (new UserModel()).getUserById(userId);
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child("users").child(userId);
+        ValueEventListener eventListener = new ValueEventListener() {
 
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/changas/" + key, changaValues);
-        //childUpdates.put("/user-posts/" + userId + "/" + key, postValues);
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UserModel userM = dataSnapshot.getValue(UserModel.class);
+                Changa changa = new Changa(key, userId, userM.name, title, description, price, "", "", mAddCategory.getSelectedItemPosition());
+                Map<String, Object> changaValues = changa.toMap();
 
-        mDatabase.updateChildren(childUpdates);
+                Map<String, Object> childUpdates = new HashMap<>();
+                childUpdates.put("/changas/" + key, changaValues);
+                //childUpdates.put("/user-posts/" + userId + "/" + key, postValues);
+
+                mDatabase.updateChildren(childUpdates);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                System.out.println("!!!!!!!! Failed to read user:"+ error.toException());
+            }
+        };
+        database.addValueEventListener(eventListener);
+
+
     }
 
 }

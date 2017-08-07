@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             "foo@example.com:hello", "bar@example.com:world"
     };
 
-    private static final String TAG = "";
+    private static final String TAG = "Login";
     private static final int RC_SIGN_IN = 0;
 
     /**
@@ -480,7 +480,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                                             "",
                                                             userFirebase.getPhoneNumber(),
                                                             userFirebase.getPhotoUrl().toString());
-                            user.writeNewUser(user);
+                            user.writeNewUser();
 
 
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);

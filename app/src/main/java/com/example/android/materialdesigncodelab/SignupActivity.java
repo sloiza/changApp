@@ -15,6 +15,7 @@ package com.example.android.materialdesigncodelab;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
@@ -25,6 +26,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.materialdesigncodelab.Models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -82,7 +84,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
     }
     // [END on_start_check_user]
 
-    private void createAccount(String email, String password, String name, String description) {
+    private void createAccount(String email, String password, final String name, final String description) {
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
             return;
@@ -98,8 +100,17 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            FirebaseUser userFirebase = mAuth.getCurrentUser();
+                            // Add user
+                            UserModel user = new UserModel(
+                                    userFirebase.getUid(),
+                                    name,
+                                    userFirebase.getEmail(),
+                                    description,
+                                    userFirebase.getPhoneNumber(),
+                                    null);
+                            user.writeNewUser();
+                            updateUI(userFirebase);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -228,6 +239,8 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         if (user != null) {
             findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
             findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
+            startActivity(new Intent(SignupActivity.this,MainActivity.class));
+            finish();
         } else {
             mStatusTextView.setText(R.string.signed_out);
             mDetailTextView.setText(null);
