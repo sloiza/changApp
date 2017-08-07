@@ -15,7 +15,6 @@ package com.example.android.materialdesigncodelab;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
@@ -227,10 +226,6 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
-            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
-                    user.getEmail(), user.isEmailVerified()));
-            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
-
             findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
             findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
         } else {
@@ -247,6 +242,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         int i = v.getId();
         if (i == R.id.email_create_account_button) {
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString(), mNameField.getText().toString(), mDescriptionField.getText().toString());
+
         } else if (i == R.id.email_sign_in_button) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
         }

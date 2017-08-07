@@ -98,26 +98,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         //setupActionBar();
-/*        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
-
-*/
-
-
-
-
-
-
-
-        //UserModel user = new UserModel("sima@sami", "abc", "qwerty@sami", "414141", "125631", "/path/Image");
-        //user.writeNewUser(user);
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
-
         mPasswordView = (EditText) findViewById(R.id.password);
+
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -299,8 +285,39 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
+            System.out.println("LOGIN WITH:"+email+", "+password);
             mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+
+            //authenticate user
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            // If sign in fails, display a message to the user. If sign in succeeds
+                            // the auth state listener will be notified and logic to handle the
+                            // signed in user can be handled in the listener.
+                            showProgress(true);
+                            //progressBar.setVisibility(View.GONE);
+                            if (!task.isSuccessful()) {
+                                //System.out.println(task.getResult().toString());
+                                //System.out.println(task.getResult().getUser().toString());
+                                System.out.println("SIGN IN FAILS");
+                                Toast.makeText(LoginActivity.this, "Sign In failed!",
+                                        Toast.LENGTH_SHORT).show();
+                                showProgress(false);
+                                startActivity(new Intent(LoginActivity.this,LoginActivity.class));
+                                finish();
+                            } else {
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+                    });
+            System.out.println("===============================");
+            System.out.println(mAuth.getCurrentUser());
+            System.out.println("===============================");
+            //mAuthTask.execute((Void) null);
         }
     }
 
