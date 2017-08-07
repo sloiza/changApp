@@ -35,6 +35,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -77,14 +78,37 @@ public class CardContentFragment extends Fragment {
             description = (TextView) itemView.findViewById(R.id.card_text);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    Context context = v.getContext();
+                public void onClick(final View v) {
+                    final Context context = v.getContext();
                     int nPos = LENGTH-getAdapterPosition()-1;
-                    String idChanga = mIDS[nPos];
+                    final String idChanga = mIDS[nPos];
+                    DatabaseReference changa = FirebaseDatabase.getInstance().getReference("changas/"+idChanga+"/uid");
 
-                    Intent intent = new Intent(context, DetailActivity2.class);
-                    intent.putExtra(DetailActivity2.EXTRA_POSITION, idChanga);
-                    context.startActivity(intent);
+                    ValueEventListener myListener = new ValueEventListener() {
+
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            System.out.println(userId);
+                            System.out.println(dataSnapshot.getValue());
+                            if (dataSnapshot.getValue().toString().equals(userId)) {
+                                System.out.println("It's not my Changa weon");
+                                Snackbar.make(v, "No puedes postularte a tu propia changa!",
+                                        Snackbar.LENGTH_LONG).show();
+                            } else {
+                                System.out.println("It's my Changa, dude!!!!!!!!!!!");
+                                Intent intent = new Intent(context, DetailActivity2.class);
+                                intent.putExtra(DetailActivity2.EXTRA_POSITION, idChanga);
+                                context.startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    };
+                    changa.addListenerForSingleValueEvent(myListener);
                 }
             });
 
@@ -92,9 +116,38 @@ public class CardContentFragment extends Fragment {
             Button button = (Button)itemView.findViewById(R.id.action_button);
             button.setOnClickListener(new View.OnClickListener(){
                 @Override
-                public void onClick(View v) {
-                    Snackbar.make(v, "Action is pressed",
-                            Snackbar.LENGTH_LONG).show();
+                public void onClick(final View v) {
+                    final Context context = v.getContext();
+                    int nPos = LENGTH-getAdapterPosition()-1;
+                    final String idChanga = mIDS[nPos];
+
+                    DatabaseReference changa = FirebaseDatabase.getInstance().getReference("changas/"+idChanga+"/uid");
+
+                    ValueEventListener myListener = new ValueEventListener() {
+
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            System.out.println(userId);
+                            System.out.println(dataSnapshot.getValue());
+                            if (dataSnapshot.getValue().toString().equals(userId)) {
+                                System.out.println("It's not my Changa weon");
+                                Snackbar.make(v, "No puedes postularte a tu propia changa!",
+                                        Snackbar.LENGTH_LONG).show();
+                            } else {
+                                System.out.println("It's my Changa, dude!!!!!!!!!!!");
+                                Intent intent = new Intent(context, DetailActivity2.class);
+                                intent.putExtra(DetailActivity2.EXTRA_POSITION, idChanga);
+                                context.startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    };
+                    changa.addListenerForSingleValueEvent(myListener);
                 }
             });
 
@@ -103,7 +156,7 @@ public class CardContentFragment extends Fragment {
             favoriteImageButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    Snackbar.make(v, "Added to Favorite",
+                    Snackbar.make(v, "Agregado a mis Changas Favoritas!",
                             Snackbar.LENGTH_LONG).show();
                 }
             });
