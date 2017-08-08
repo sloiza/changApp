@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.nav_postulacionesActivas:
                                 Toast.makeText(MainActivity.this, "Postulaciones Activas",
                                         Toast.LENGTH_SHORT).show();
-                                Intent postulacionesActivas = new Intent(MainActivity.this,ChangasActivasActivity.class);
+                                Intent postulacionesActivas = new Intent(MainActivity.this,PostulacionesActivasActivity.class);
                                 startActivity(postulacionesActivas);
                                 break;
                             case R.id.nav_changasFinalizadas:

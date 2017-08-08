@@ -94,6 +94,10 @@
             android:name=".ChangasActivasActivity"
             android:label="@string/action_add_changa"
             android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".PostulacionesActivasActivity"
+            android:label="@string/action_add_changa"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
