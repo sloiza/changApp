@@ -1,5 +1,7 @@
 package com.example.android.materialdesigncodelab.Models;
 
+import android.util.Log;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +35,9 @@ public class UserModel {
 
     public UserModel() {
         // Default constructor required for calls to DataSnapshot.getValue(UserModel.class)
+        database = FirebaseDatabase.getInstance();
+        usersReference = database.getReference("users");
+
     }
 
     public UserModel(String uid, String name, String email, String description, String phone, String photo) {
@@ -47,7 +52,39 @@ public class UserModel {
         this.photo = photo;
     }
 
-    public void writeNewUser(UserModel user) {
+    /**
+     * User data change listener
+     */
+    public void writeNewUser() {
+       // DatabaseReference dataUsers = usersReference.child("users");
+        FirebaseUser userFirebase = FirebaseAuth.getInstance().getCurrentUser();
+        uid = userFirebase.getUid();
+        usersReference.child(uid).setValue(new UserModel(uid,name,email,description,phone,photo));
+
+        // User data change listener
+        usersReference.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UserModel user = dataSnapshot.getValue(UserModel.class);
+
+                // Check for null
+                if (user == null) {
+                    System.out.println("==== write user: USER IS NULL =====");
+                    return;
+                }
+
+                System.out.println( "User data is changed!" + user.name + ", " + user.email);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                System.out.println("!!!!!!!! Failed to read user:"+ error.toException());
+            }
+        });
+    }
+
+    /*public void writeNewUser() {
         DatabaseReference dataUsers = usersReference.child("users");
 
         FirebaseUser userFirebase = FirebaseAuth.getInstance().getCurrentUser();
@@ -81,11 +118,19 @@ public class UserModel {
                 // ...
             }
         };
+        //usersReference.child("users").child(uid).addValueEventListener(userListener);
         dataUsers.addListenerForSingleValueEvent(userListener);
 
+
+    }*/
+
+    //TODO to test
+    public void printUser() {
+        System.out.println("uid: "+uid+ "\n name: "+name+" \nemail:"+email+"\ndescription: "+description+"\nphone: "+phone+"\nphoto:"+photo);
     }
 
     public UserModel getUserById(String userId) {
+        System.out.print(users);
         for (int i = 0; i < countUsers; i++) {
             if (users[i].uid.equals(userId)) {
                 return users[i];
