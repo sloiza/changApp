@@ -68,7 +68,7 @@
         </activity>
         <activity
             android:name=".DetailActivity3"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ChangasActivasActivity"
             android:theme="@style/NoActionBarTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

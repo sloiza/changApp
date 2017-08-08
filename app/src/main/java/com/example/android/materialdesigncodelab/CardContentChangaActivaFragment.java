@@ -47,15 +47,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
-import static com.example.android.materialdesigncodelab.CardContentFragment.ContentAdapter.LENGTH;
-import static com.example.android.materialdesigncodelab.CardContentFragment.ContentAdapter.mIDS;
+import static com.example.android.materialdesigncodelab.CardContentChangaActivaFragment.ContentAdapter.LENGTH;
+import static com.example.android.materialdesigncodelab.CardContentChangaActivaFragment.ContentAdapter.mIDS;
 
 /**
  * Provides UI for the view with Cards.
  */
 public class CardContentChangaActivaFragment extends Fragment {
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -130,7 +128,7 @@ public class CardContentChangaActivaFragment extends Fragment {
 
         public static int LENGTH = 0;
 
-        public static  String[] mIDS;
+        public static String[] mIDS;
         private static String[] mChangasTitle;
         private static String[] mChangasDescription;
         private static Integer[] mChangasCategory;
@@ -145,6 +143,7 @@ public class CardContentChangaActivaFragment extends Fragment {
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
                     LENGTH = 0;
+                    currentIdInCard = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
                         Changa changa = changaSnapshot.getValue(Changa.class);
                         if (changa.uid.equals(currentIdInCard)) {
@@ -155,7 +154,6 @@ public class CardContentChangaActivaFragment extends Fragment {
                     mChangasTitle = new String[LENGTH];
                     mChangasDescription = new String[LENGTH];
                     mChangasCategory = new Integer[LENGTH];
-                    currentIdInCard = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                     List<String> ids = new ArrayList<String>();
                     List<String> titles = new ArrayList<String>();
@@ -186,7 +184,6 @@ public class CardContentChangaActivaFragment extends Fragment {
                 }
             };
             mChangasReference.addValueEventListener(changaListener);
-
 
             Resources resources = context.getResources();
             TypedArray a = resources.obtainTypedArray(R.array.changas_imgs);
