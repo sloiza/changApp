@@ -21,6 +21,7 @@ public class Changa {
     public String price;
     public String date;
     public String picture;
+    public String status;   // "activa" - "enProceso" - "finalizada"
     public int category;
     public Map<String, Object> postulantes;
 
@@ -41,6 +42,7 @@ public class Changa {
         this.price = price;
         this.date = date;
         this.picture = picture;
+        this.status = "activa";
         this.category = category;
     }
 
@@ -55,6 +57,7 @@ public class Changa {
         result.put("price", price);
         result.put("date", date);
         result.put("picture", picture);
+        result.put("status", status);
         result.put("category", category);
         result.put("starCount", starCount);
         result.put("stars", stars);
