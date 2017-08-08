@@ -27,6 +27,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -50,13 +51,14 @@ public class ChangasActivasActivity extends AppCompatActivity {
         setupViewPager(viewPager);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerCA);
         // Adding menu icon to Toolbar
-        ActionBar supportActionBar = getSupportActionBar();
-        if (supportActionBar != null) {
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar_ca));
+        if (getSupportActionBar() != null) {
             VectorDrawableCompat indicator
                     = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
             indicator.setTint(ResourcesCompat.getColor(getResources(),R.color.white,getTheme()));
-            supportActionBar.setHomeAsUpIndicator(indicator);
-            supportActionBar.setDisplayHomeAsUpEnabled(true);
+            //getSupportActionBar().setHomeAsUpIndicator(indicator);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Mis changas");
         }
 
     }
@@ -97,27 +99,5 @@ public class ChangasActivasActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == android.R.id.home) {
-            mDrawerLayout.openDrawer(GravityCompat.START);
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
