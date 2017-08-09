@@ -46,7 +46,7 @@ public class PerfilPostulanteActivity extends AppCompatActivity {
         selectChanguero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: Inscribir postulante a la changa y pasarla a enProceso
+                // TODO: Inscribir postulante a la changa
                 Toast.makeText(PerfilPostulanteActivity.this, idUser+" se inscribe a "+idChanga,
                         Toast.LENGTH_SHORT).show();
 
