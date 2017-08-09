@@ -164,9 +164,10 @@ public class DetailActivity3 extends AppCompatActivity {
                                     String nameSelected = ((UserModel) item).name;
                                     //Toast.makeText(getBaseContext(), nameSelected, Toast.LENGTH_SHORT).show();
                                     Intent verPerfilPostulante = new Intent(DetailActivity3.this,PerfilPostulanteActivity.class);
-                                    verPerfilPostulante.putExtra(DetailActivity3.EXTRA_POSITION, idSelected);
+                                    verPerfilPostulante.putExtra(PerfilPostulanteActivity.ID_USER, idSelected);
+                                    verPerfilPostulante.putExtra(PerfilPostulanteActivity.ID_CHANGA, idChanga);
                                     startActivity(verPerfilPostulante);
-                                    // Finish activity
+                                    finish();
                                     // Toast.makeText(getBaseContext(), nameSelected, Toast.LENGTH_SHORT).show();
                                 }
                             }

@@ -7,8 +7,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.materialdesigncodelab.Models.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,11 +22,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import static com.example.android.materialdesigncodelab.DetailActivity3.EXTRA_POSITION;
-
 public class PerfilPostulanteActivity extends AppCompatActivity {
     private UserModel userM;
     private static Context context;
+
+    public static final String ID_USER   = "arg1";
+    public static final String ID_CHANGA = "arg2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,18 @@ public class PerfilPostulanteActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final String idUser = getIntent().getStringExtra(EXTRA_POSITION);
+        final String idChanga = getIntent().getStringExtra(ID_CHANGA);
+        final String idUser   = getIntent().getStringExtra(ID_USER);
+
+        Button selectChanguero = (Button) findViewById(R.id.button2);
+        selectChanguero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: Inscribir postulante a la changa y pasarla a enProceso
+                Toast.makeText(PerfilPostulanteActivity.this, idUser+" se inscribe a "+idChanga,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child(idUser);
