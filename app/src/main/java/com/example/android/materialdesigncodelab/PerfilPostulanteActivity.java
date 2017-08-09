@@ -25,6 +25,8 @@ import com.squareup.picasso.Picasso;
 public class PerfilPostulanteActivity extends AppCompatActivity {
     private UserModel userM;
     private static Context context;
+    private static UserModel currentUser;
+    private static Changa currentChanga;
 
     public static final String ID_USER   = "arg1";
     public static final String ID_CHANGA = "arg2";
@@ -47,6 +49,45 @@ public class PerfilPostulanteActivity extends AppCompatActivity {
                 // TODO: Inscribir postulante a la changa y pasarla a enProceso
                 Toast.makeText(PerfilPostulanteActivity.this, idUser+" se inscribe a "+idChanga,
                         Toast.LENGTH_SHORT).show();
+
+                // GET USER BY ID.
+                DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child(idUser);
+                ValueEventListener eventListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        currentUser = dataSnapshot.getValue(UserModel.class);
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        System.out.println("!!!!!!!! Failed to read user:"+ error.toException());
+                    }
+                };
+                database.addValueEventListener(eventListener);
+
+                // GET CHANGA BY ID.
+                database = FirebaseDatabase.getInstance().getReference("changas").child(idChanga);
+                eventListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        currentChanga = dataSnapshot.getValue(Changa.class);
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        System.out.println("!!!!!!!! Failed to read changa:"+ error.toException());
+                    }
+                };
+                database.addValueEventListener(eventListener);
+
+                if ( currentUser!=null && currentChanga!=null) {
+                    // TODO: Pasar la changa a "enProceso" y definir el user como changuero seleccionado.
+                    FirebaseDatabase.getInstance().getReference("changas").child(idChanga).child("status").setValue("enProceso");
+                    // Agregar changuero a la changa
+                } else {
+                    System.out.println("FAILED READING USER AND CHANGA");
+                }
+
             }
         });
 
