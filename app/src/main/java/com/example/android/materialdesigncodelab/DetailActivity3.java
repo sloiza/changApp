@@ -16,6 +16,7 @@
 
 package com.example.android.materialdesigncodelab;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -25,8 +26,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +42,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.content.ContentValues.TAG;
 
 /**
@@ -47,6 +54,7 @@ public class DetailActivity3 extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "";
     private DatabaseReference mChangasReference;
+    private DatabaseReference mUsersReference;
     //private DatabaseReference mChangasReference2;
 
     private CollapsingToolbarLayout collapsingToolbar;
@@ -56,24 +64,33 @@ public class DetailActivity3 extends AppCompatActivity {
     private Drawable[] changasImgs;
     private ImageView placeImage;
     private TextView category;
-    private TextView postulantes;
+    private Spinner postulantes;
+
+    public static String[] namesPostulantes;
+    public static String[] idsPostulantes;
+    public static List<String> namesP;
+    public static List<String> idsP;
+    public static int LENGTH = 0;
+
+
     // private Button mPostularButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final String currentId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         setContentView(R.layout.activity_detail_3);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar_p));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // Set Collapsing Toolbar layout to the screen
-        collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_p);
-        placeLocation =  (TextView) findViewById(R.id.place_location_p);
-        placeDetail = (TextView) findViewById(R.id.place_detail_p);
-        placeImage = (ImageView) findViewById(R.id.image_p);
-        category = (TextView) findViewById(R.id.categoria_changa_p);
-        postulantes = (TextView) findViewById(R.id.place_postulante_p);
 
+        // Set Collapsing Toolbar layout to the screen
+        collapsingToolbar   = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_p);
+        placeLocation       = (TextView)  findViewById(R.id.place_location_p);
+        placeDetail         = (TextView)  findViewById(R.id.place_detail_p);
+        placeImage          = (ImageView) findViewById(R.id.image_p);
+        category            = (TextView)  findViewById(R.id.categoria_changa_p);
+        postulantes         = (Spinner)   findViewById(R.id.place_postulante_p);
+
+        final String currentId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         final String idChanga = getIntent().getStringExtra(EXTRA_POSITION);
 
         Resources resources = getResources();
@@ -84,37 +101,84 @@ public class DetailActivity3 extends AppCompatActivity {
         }
         a.recycle();
 
-        mChangasReference = FirebaseDatabase.getInstance().getReference("changas");
+        mUsersReference     = FirebaseDatabase.getInstance().getReference("users");
+        mChangasReference   = FirebaseDatabase.getInstance().getReference("changas");
         ValueEventListener changaListener = new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
+
                     if(changaSnapshot.getKey().equals(idChanga)) {
+
                         collapsingToolbar.setTitle(changaSnapshot.getValue(Changa.class).title);
                         placeDetail.setText(changaSnapshot.getValue(Changa.class).body);
                         placeLocation.setText(changaSnapshot.getValue(Changa.class).author);
-                        changaCategory = changaSnapshot.getValue(Changa.class).category;
-                        for(final DataSnapshot postulante : changaSnapshot.child("postulantes").getChildren()) {
-                            DatabaseReference database = FirebaseDatabase.getInstance().getReference("users").child(postulante.getKey());
-                            ValueEventListener eventListener = new ValueEventListener() {
 
+                        namesP = new ArrayList<String>();
+                        idsP   = new ArrayList<String>();
+
+                        final ArrayList<UserModel> arrayPostulantes = new ArrayList<>();
+                        arrayPostulantes.add(new UserModel("","Seleccionar...","","","",""));
+
+                        for(final DataSnapshot postulante : changaSnapshot.child("postulantes").getChildren()) {
+                            LENGTH++;
+                            String postulanteId = postulante.getKey();
+                            System.out.println(postulanteId);
+                            mUsersReference.child(postulanteId).addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    UserModel userM = dataSnapshot.getValue(UserModel.class);
-                                    postulantes.setText(userM.name);
-
+                                    System.out.println(dataSnapshot.getValue(UserModel.class).name);
+                                    System.out.println(dataSnapshot.getValue(UserModel.class).uid);
+                                    arrayPostulantes.add(dataSnapshot.getValue(UserModel.class));
+                                    namesP.add(dataSnapshot.getValue(UserModel.class).name);
+                                    idsP.add(dataSnapshot.getValue(UserModel.class).uid);
                                 }
 
                                 @Override
                                 public void onCancelled(DatabaseError error) {
                                     // Failed to read value
-                                    System.out.println("!!!!!!!! Failed to read user:"+ error.toException());
                                 }
-                            };
-                            database.addValueEventListener(eventListener);
-
-
+                            });
                         }
+                        System.out.println(LENGTH);
+
+                        namesPostulantes    = new String[LENGTH];
+                        idsPostulantes      = new String[LENGTH];
+
+                        namesP.toArray(namesPostulantes);
+                        idsP.toArray(idsPostulantes);
+
+                        ArrayAdapter<UserModel> adapter = new ArrayAdapter<UserModel>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayPostulantes);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        postulantes.setAdapter(adapter);
+                        postulantes.setOnItemSelectedListener(
+                                new AdapterView.OnItemSelectedListener() {
+
+                            @Override
+                            public void onItemSelected(AdapterView<?> arg0, View view, int pos, long id) {
+                                if ( (pos!=0) && (id!=0)) {
+                                    Object item = arg0.getItemAtPosition(pos);
+                                    String idSelected   = ((UserModel) item).uid;
+                                    String nameSelected = ((UserModel) item).name;
+                                    //Toast.makeText(getBaseContext(), nameSelected, Toast.LENGTH_SHORT).show();
+                                    Intent verPerfilPostulante = new Intent(DetailActivity3.this,PerfilPostulanteActivity.class);
+                                    verPerfilPostulante.putExtra(DetailActivity3.EXTRA_POSITION, idSelected);
+                                    startActivity(verPerfilPostulante);
+                                    // Finish activity
+                                    // Toast.makeText(getBaseContext(), nameSelected, Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> arg0) {
+                                // TODO Auto-generated method stub
+
+                            }
+                        });
+
+                        changaCategory = changaSnapshot.getValue(Changa.class).category;
                         placeImage.setImageDrawable(changasImgs[changaCategory]);
 
                         Resources resources = getResources();

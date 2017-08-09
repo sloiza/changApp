@@ -136,6 +136,7 @@
         <item>Otros</item>
     </string-array>
     <string name="title_activity_perfil">Tu perfil</string>
+    <string name="title_activity_postulante_perfil">Perfil del postulante</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

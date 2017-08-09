@@ -124,15 +124,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/md_keylines"
                 android:layout_marginTop="@dimen/md_keylines"
-                android:text="Postulantes"
+                android:text="Selecciona un postulante"
                 android:textColor="?attr/colorAccent"
                 android:textSize="@dimen/article_titles" />
 
-            <TextView
+            <Spinner
                 android:id="@+id/place_postulante_p"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:entries="@array/array_categories"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp" />
 
 
         </LinearLayout>
