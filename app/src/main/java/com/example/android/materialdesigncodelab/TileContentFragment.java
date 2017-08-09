@@ -25,11 +25,27 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Provides UI for the view with Tile.
@@ -79,18 +95,46 @@ public class TileContentFragment extends Fragment {
      * Adapter to display recycler view.
      */
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-        // Set numbers of Tiles in RecyclerView.
-        private static final int LENGTH = 18;
+        private DatabaseReference mChangasReference;
 
-        private final String[] mPlaces;
-        private final Drawable[] mPlacePictures;
+        public static int LENGTH = 0;
+
+        public static Integer[] mIDS;
+        private final String[] mChangasTitle;
+        private final Drawable[] mChangasPictures;
+
         public ContentAdapter(Context context) {
+            mChangasReference = FirebaseDatabase.getInstance().getReference("changas");
+            ValueEventListener changaListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    SortedSet<Integer> ids = new TreeSet<>();
+                    for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
+                        Changa changa = changaSnapshot.getValue(Changa.class);
+                        ids.add(changa.category);
+                    }
+                    LENGTH = ids.size();
+                    mIDS = new Integer[LENGTH];
+                    ids.toArray(mIDS);
+
+                    notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                }
+            };
+            mChangasReference.addValueEventListener(changaListener);
+
             Resources resources = context.getResources();
-            mPlaces = resources.getStringArray(R.array.places);
-            TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-            mPlacePictures = new Drawable[a.length()];
-            for (int i = 0; i < mPlacePictures.length; i++) {
-                mPlacePictures[i] = a.getDrawable(i);
+
+            mChangasTitle = resources.getStringArray(R.array.array_categories);
+
+            TypedArray a = resources.obtainTypedArray(R.array.changas_imgs);
+            mChangasPictures = new Drawable[a.length()];
+            for (int i = 0; i < a.length(); i++) {
+                mChangasPictures[i] = a.getDrawable(i);
             }
             a.recycle();
         }
@@ -102,8 +146,8 @@ public class TileContentFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.picture.setImageDrawable(mPlacePictures[position % mPlacePictures.length]);
-            holder.name.setText(mPlaces[position % mPlaces.length]);
+            holder.picture.setImageDrawable(mChangasPictures[mIDS[position]]);
+            holder.name.setText(mChangasTitle[mIDS[position]]);
         }
 
         @Override

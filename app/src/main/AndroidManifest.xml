@@ -96,6 +96,7 @@
             android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".ChangasActivasActivity"
+            android:parentActivityName=".MainActivity"
             android:label="@string/action_add_changa"
             android:theme="@style/AppTheme"></activity>
         <activity
