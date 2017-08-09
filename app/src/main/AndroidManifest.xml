@@ -100,6 +100,11 @@
             android:label="@string/action_add_changa"
             android:theme="@style/AppTheme"></activity>
         <activity
+            android:name=".ChangasPendientesActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/action_add_changa"
+            android:theme="@style/AppTheme"></activity>
+        <activity
             android:name=".PostulacionesActivasActivity"
             android:label="@string/action_add_changa"
             android:theme="@style/AppTheme"></activity>

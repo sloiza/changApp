@@ -41,6 +41,11 @@
                 android:icon="@drawable/ic_bookmark_border_black_24dp"
                 android:tint="@color/button_grey"
                 android:title="Changas activas" />
+            <item
+                android:id="@+id/nav_changasPendientes"
+                android:icon="@drawable/ic_bookmark_border_black_24dp"
+                android:tint="@color/button_grey"
+                android:title="Changas Pendientes" />
         </menu>
     </item>
 
