@@ -82,8 +82,8 @@ public class CardContentChangaPendienteFragment extends Fragment {
                     int nPos = LENGTH-getAdapterPosition()-1;
                     String idChanga = mIDS[nPos];
 
-                    Intent intent = new Intent(context, DetailActivity3.class);
-                    intent.putExtra(DetailActivity3.EXTRA_POSITION, idChanga);
+                    Intent intent = new Intent(context, DetailChangaPendienteActivity.class);
+                    intent.putExtra(DetailChangaPendienteActivity.EXTRA_POSITION, idChanga);
                     context.startActivity(intent);
                 }
             });

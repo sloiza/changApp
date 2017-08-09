@@ -74,6 +74,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
+        <activity
+            android:name=".DetailChangaPendienteActivity"
+            android:parentActivityName=".ChangasPendientesActivity"
+            android:theme="@style/NoActionBarTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:theme="@style/NoActionBarTheme" />

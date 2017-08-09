@@ -83,7 +83,8 @@ public class PerfilPostulanteActivity extends AppCompatActivity {
                 if ( currentUser!=null && currentChanga!=null) {
                     // TODO: Pasar la changa a "enProceso" y definir el user como changuero seleccionado.
                     FirebaseDatabase.getInstance().getReference("changas").child(idChanga).child("status").setValue("enProceso");
-                    // Agregar changuero a la changa
+                    FirebaseDatabase.getInstance().getReference("changas").child(idChanga).child("changuero").setValue(idUser);
+                    // TODO: Se debe notificar al changuero que se lo ha seleccionado para esta changa.
                 } else {
                     System.out.println("FAILED READING USER AND CHANGA");
                 }
