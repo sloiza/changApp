@@ -86,6 +86,14 @@
                 android:value=".MainActivity" />
             >
         </activity>
+        <activity android:name=".ChangasPorCategoriaActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/NoActionBarTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+            >
+        </activity>
         <activity
             android:name=".PerfilActivity"
             android:label="@string/title_activity_perfil"

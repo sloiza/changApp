@@ -38,14 +38,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 import static android.content.ContentValues.TAG;
+import static com.example.android.materialdesigncodelab.TileContentFragment.ContentAdapter.mIDS;
 
 /**
  * Provides UI for the view with Tile.
@@ -83,8 +80,8 @@ public class TileContentFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, DetailActivity.class);
-                    intent.putExtra(DetailActivity.EXTRA_POSITION, getAdapterPosition());
+                    Intent intent = new Intent(context, ChangasPorCategoriaActivity.class);
+                    intent.putExtra("EXTRA_POSITION", mIDS[getAdapterPosition()]);
                     context.startActivity(intent);
                 }
             });
@@ -100,7 +97,7 @@ public class TileContentFragment extends Fragment {
         public static int LENGTH = 0;
 
         public static Integer[] mIDS;
-        private final String[] mChangasTitle;
+        public static String[] mChangasTitle;
         private final Drawable[] mChangasPictures;
 
         public ContentAdapter(Context context) {
