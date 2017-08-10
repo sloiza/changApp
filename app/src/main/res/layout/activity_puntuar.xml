@@ -27,7 +27,6 @@
 
 
             <LinearLayout
-
                 android:id="@+id/add_changa_form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,13 +39,13 @@
                     android:layout_height="wrap_content"
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-                    <android.support.v7.widget.Toolbar
-                        android:id="@+id/toolbar"
-                        android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:background="?attr/colorPrimary"
-                        app:layout_scrollFlags="scroll|enterAlways"
-                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
                 </android.support.design.widget.AppBarLayout>
 
                 <TextView
@@ -67,26 +66,19 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
-                    android:entries="@array/puntuaciones"
+                    android:entries="@array/array_calification"
                     android:paddingBottom="10dp"
                     android:paddingTop="10dp" />
 
-                <android.support.design.widget.TextInputLayout
+                <AutoCompleteTextView
+                    android:id="@+id/calification_comment"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp">
+                    android:hint="Ingresa un comentario" />
 
-                    <EditText
-                        android:id="@+id/calification_comment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Ingresa un comentario"
-                        android:imeOptions="actionUnspecified"
-                        android:inputType="number|numberDecimal"
-                        android:maxLines="1" />
-
-                </android.support.design.widget.TextInputLayout>
 
                 <Button
                     android:id="@+id/send_calification"

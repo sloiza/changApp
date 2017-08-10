@@ -136,6 +136,13 @@
         <item>Computacion</item>
         <item>Otros</item>
     </string-array>
+    <string-array name="array_calification">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
     <string name="title_activity_perfil">Tu perfil</string>
     <string name="title_activity_postulante_perfil">Perfil del postulante</string>
     <string name="large_text">
