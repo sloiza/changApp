@@ -16,14 +16,18 @@
 
 package com.example.android.materialdesigncodelab;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -59,6 +63,8 @@ public class DetailChangaPendienteActivity extends AppCompatActivity {
     private TextView category;
     private TextView changuero;
 
+    private Button finalizarChangaButton;
+
     // private Button mPostularButton;
 
     @Override
@@ -75,6 +81,18 @@ public class DetailChangaPendienteActivity extends AppCompatActivity {
         placeImage          = (ImageView) findViewById(R.id.image_cp);
         category            = (TextView)  findViewById(R.id.categoria_changa_cp);
         changuero           = (TextView)  findViewById(R.id.place_changuero_cp);
+
+        finalizarChangaButton = (Button)  findViewById(R.id.ok_finnaly_changa);
+
+        FloatingActionButton enviarMensaje = (FloatingActionButton) findViewById(R.id.messageChangero);
+        enviarMensaje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent enviarMensajeAChanguero = new Intent(DetailChangaPendienteActivity.this,MensajesActivity.class);
+                startActivity(enviarMensajeAChanguero);
+            }
+        });
+
 
         final String currentId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         final String idChanga = getIntent().getStringExtra(EXTRA_POSITION);

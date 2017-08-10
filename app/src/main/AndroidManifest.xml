@@ -39,6 +39,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MensajesActivity"
+            android:theme="@style/NoActionBarTheme">
+        </activity>
+
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
