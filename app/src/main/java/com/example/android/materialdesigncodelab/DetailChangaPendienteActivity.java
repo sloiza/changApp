@@ -101,6 +101,10 @@ public class DetailChangaPendienteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FirebaseDatabase.getInstance().getReference("changas").child(idChanga).child("status").setValue("finalizada");
+                //Saltar a pantalla puntuar
+                //Intent puntuar = new Intent(DetailChangaPendienteActivity.this,PuntuarActivity.class);
+                //startActivity(puntuar);
+                //Saltar a pantalla pago (splash)
                 finish();
             }
         });

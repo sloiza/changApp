@@ -143,9 +143,19 @@ public class CardContentChangaFinalizadaFragment extends Fragment {
 
                     LENGTH = 0;
                     currentIdInCard = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    List<String> ids = new ArrayList<String>();
+                    List<String> titles = new ArrayList<String>();
+                    List<String> descriptions = new ArrayList<String>();
+                    List<Integer> categories = new ArrayList<Integer>();
+
                     for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
                         Changa changa = changaSnapshot.getValue(Changa.class);
                         if (changa.uid.equals(currentIdInCard) && changa.status.equals("finalizada")) {
+
+                            ids.add(changa.id);
+                            titles.add(changa.title);
+                            descriptions.add(changa.body);
+                            categories.add(changa.category);
                             LENGTH++;
                         }
                     }
@@ -154,20 +164,6 @@ public class CardContentChangaFinalizadaFragment extends Fragment {
                     mChangasDescription = new String[LENGTH];
                     mChangasCategory = new Integer[LENGTH];
 
-                    List<String> ids = new ArrayList<String>();
-                    List<String> titles = new ArrayList<String>();
-                    List<String> descriptions = new ArrayList<String>();
-                    List<Integer> categories = new ArrayList<Integer>();
-
-                    for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
-                        Changa changa = changaSnapshot.getValue(Changa.class);
-                        if (changa.uid.equals(currentIdInCard) && changa.status.equals("enProceso")) {
-                            ids.add(changa.id);
-                            titles.add(changa.title);
-                            descriptions.add(changa.body);
-                            categories.add(changa.category);
-                        }
-                    }
                     ids.toArray(mIDS);
                     titles.toArray(mChangasTitle);
                     descriptions.toArray(mChangasDescription);
