@@ -110,14 +110,16 @@ public class ListContentFragment extends Fragment {
                     LENGTH = 0;
                     for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
                         Changa changa = changaSnapshot.getValue(Changa.class);
-                        if(changa.status.equals("enProceso")){
+                        if(changa.status.equals("enProceso")) {
                             String idChanguero = changaSnapshot.child("changuero").getValue(String.class);
-                            if(idChanguero.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
-                                ids.add(changa.id);
-                                titles.add(changa.title);
-                                descriptions.add(changa.body);
-                                categories.add(changa.category);
-                                LENGTH++;
+                            if (idChanguero != null) {
+                                if (idChanguero.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                                    ids.add(changa.id);
+                                    titles.add(changa.title);
+                                    descriptions.add(changa.body);
+                                    categories.add(changa.category);
+                                    LENGTH++;
+                                }
                             }
                         }
                     }
