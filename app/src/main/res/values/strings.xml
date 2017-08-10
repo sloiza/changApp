@@ -39,7 +39,7 @@
     <string name="action_sign_up">Regristrate</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="action_add_changa">Agregar Changa</string>
-    <string name="puntuar">Enviar Puntuacion</string>
+    <string name="puntuar">Enviar calificacion</string>
     <string name="error_invalid_email">La direccion de mail es invalida</string>
     <string name="error_invalid_password">La contraseña es muy corta</string>
     <string name="error_incorrect_password">La contraseña es incorrecta</string>

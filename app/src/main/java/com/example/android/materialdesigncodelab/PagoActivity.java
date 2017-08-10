@@ -1,5 +1,6 @@
 package com.example.android.materialdesigncodelab;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,7 +21,10 @@ public class PagoActivity extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable(){
             public void run(){
-
+                //Saltar a pantalla puntuar
+                Intent puntuar = new Intent(PagoActivity.this,PuntuarActivity.class);
+                startActivity(puntuar);
+                finish();
             };
         }, DURACION_SPLASH);
     }
