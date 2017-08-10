@@ -91,6 +91,15 @@
         </activity>
 
         <activity
+            android:name=".DetailChangaFinalizadaActivity"
+            android:parentActivityName=".ChangasPendientesActivity"
+            android:theme="@style/NoActionBarTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
             android:name=".DetailPostulacionActivaActivity"
             android:parentActivityName=".PostulacionesActivasActivity"
             android:theme="@style/NoActionBarTheme">
@@ -127,6 +136,11 @@
             android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".ChangasPendientesActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/action_add_changa"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".ChangasFinalizadasActivity"
             android:parentActivityName=".MainActivity"
             android:label="@string/action_add_changa"
             android:theme="@style/AppTheme"></activity>

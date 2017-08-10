@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.nav_changasFinalizadas:
                                 Toast.makeText(MainActivity.this, "Changas Finalizadas",
                                         Toast.LENGTH_SHORT).show();
-                                Intent changasFinalizadas = new Intent(MainActivity.this,ChangasActivasActivity.class);
+                                Intent changasFinalizadas = new Intent(MainActivity.this,ChangasFinalizadasActivity.class);
                                 startActivity(changasFinalizadas);
                                 break;
                             case R.id.nav_cerrarSesion:

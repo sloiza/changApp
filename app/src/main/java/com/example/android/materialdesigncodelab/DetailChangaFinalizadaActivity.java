@@ -39,15 +39,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static android.content.ContentValues.TAG;
 
 /**
  * Provides UI for the Detail page with Collapsing Toolbar.
  */
-public class DetailChangaPendienteActivity extends AppCompatActivity {
+public class DetailChangaFinalizadaActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "";
     private DatabaseReference mChangasReference;
@@ -70,40 +67,20 @@ public class DetailChangaPendienteActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_changa_pendiente);
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar_cp));
+        setContentView(R.layout.activity_detail_changa_finalizada);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar_cf));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Set Collapsing Toolbar layout to the screen
-        collapsingToolbar     = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_cp);
-        placeLocation         = (TextView)  findViewById(R.id.place_location_cp);
-        placeDetail           = (TextView)  findViewById(R.id.place_detail_cp);
-        placeImage            = (ImageView) findViewById(R.id.image_cp);
-        category              = (TextView)  findViewById(R.id.categoria_changa_cp);
-        changuero             = (TextView)  findViewById(R.id.place_changuero_cp);
-
-        finalizarChangaButton = (Button)  findViewById(R.id.ok_finnaly_changa);
-
-        FloatingActionButton enviarMensaje = (FloatingActionButton) findViewById(R.id.messageChangero);
-        enviarMensaje.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent enviarMensajeAChanguero = new Intent(DetailChangaPendienteActivity.this,MensajesActivity.class);
-                startActivity(enviarMensajeAChanguero);
-            }
-        });
-
+        collapsingToolbar     = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_cf);
+        placeLocation         = (TextView)  findViewById(R.id.place_location_cf);
+        placeDetail           = (TextView)  findViewById(R.id.place_detail_cf);
+        placeImage            = (ImageView) findViewById(R.id.image_cf);
+        category              = (TextView)  findViewById(R.id.categoria_changa_cf);
+        changuero             = (TextView)  findViewById(R.id.place_changuero_cf);
 
         final String currentId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         final String idChanga = getIntent().getStringExtra(EXTRA_POSITION);
-
-        finalizarChangaButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseDatabase.getInstance().getReference("changas").child(idChanga).child("status").setValue("finalizada");
-                finish();
-            }
-        });
 
         Resources resources = getResources();
         TypedArray a = resources.obtainTypedArray(R.array.changas_imgs);

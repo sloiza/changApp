@@ -20,7 +20,7 @@ public class MensajesActivity extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable(){
             public void run(){
-                
+
             };
         }, DURACION_SPLASH);
     }
