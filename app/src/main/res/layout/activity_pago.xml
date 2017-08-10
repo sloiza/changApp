@@ -7,13 +7,13 @@
     android:background="#FFFFFF">
 
     <ImageView
-        android:id="@+id/ivSplashMensajes"
+        android:id="@+id/ivSplashPago"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
         android:scaleType="fitXY"
-        android:src="@drawable/bg" />
+        android:src="@drawable/pp2" />
 
 </RelativeLayout>

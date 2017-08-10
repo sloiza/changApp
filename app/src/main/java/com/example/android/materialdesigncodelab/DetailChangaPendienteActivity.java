@@ -105,6 +105,8 @@ public class DetailChangaPendienteActivity extends AppCompatActivity {
                 Intent puntuar = new Intent(DetailChangaPendienteActivity.this,PuntuarActivity.class);
                 startActivity(puntuar);
                 //Saltar a pantalla pago (splash)
+                Intent pago = new Intent(DetailChangaPendienteActivity.this,PagoActivity.class);
+                startActivity(pago);
                 finish();
             }
         });

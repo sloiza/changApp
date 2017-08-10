@@ -44,6 +44,10 @@
             android:name=".MensajesActivity"
             android:theme="@style/NoActionBarTheme">
         </activity>
+        <activity
+            android:name=".PagoActivity"
+            android:theme="@style/NoActionBarTheme">
+        </activity>
 
         <activity
             android:name=".LoginActivity"
