@@ -146,7 +146,7 @@ public class CardContentChangaActivaFragment extends Fragment {
                     currentIdInCard = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
                         Changa changa = changaSnapshot.getValue(Changa.class);
-                        if (changa.uid.equals(currentIdInCard)) {
+                        if (changa.uid.equals(currentIdInCard) && changa.status.equals("activa")) {
                             LENGTH++;
                         }
                     }
@@ -162,7 +162,7 @@ public class CardContentChangaActivaFragment extends Fragment {
 
                     for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
                         Changa changa = changaSnapshot.getValue(Changa.class);
-                        if (changa.uid.equals(currentIdInCard)) {
+                        if (changa.uid.equals(currentIdInCard) && changa.status.equals("activa")) {
                             ids.add(changa.id);
                             titles.add(changa.title);
                             descriptions.add(changa.body);

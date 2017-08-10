@@ -1,6 +1,6 @@
 package com.example.android.materialdesigncodelab;
 
-import com.example.android.materialdesigncodelab.Models.UserModel;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -33,7 +33,7 @@ public class Changa {
     }
 
     public Changa(String id, String uid, String author, String title, String body, String price,
-                            String date, String picture, int category) {
+                            String date, String picture, int category, String status) {
         this.id = id;
         this.uid = uid;
         this.author = author;
@@ -42,7 +42,7 @@ public class Changa {
         this.price = price;
         this.date = date;
         this.picture = picture;
-        this.status = "activa";
+        this.status = status;
         this.category = category;
     }
 
@@ -63,5 +63,21 @@ public class Changa {
         result.put("stars", stars);
 
         return result;
+    }
+
+    public boolean setChangaInProcess(){
+        if (status.equals("activa")) {
+            status = "enProceso";
+            return true;
+        }
+        return false;
+    }
+
+    public boolean setChangaFinished(){
+        if (status.equals("enProceso")) {
+            status = "finalizada";
+            return true;
+        }
+        return false;
     }
 }

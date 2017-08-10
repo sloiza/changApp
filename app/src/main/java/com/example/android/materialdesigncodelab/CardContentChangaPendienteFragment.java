@@ -46,15 +46,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
-import static com.example.android.materialdesigncodelab.CardContentPostulacionActivaFragment.ContentAdapter.LENGTH;
-import static com.example.android.materialdesigncodelab.CardContentPostulacionActivaFragment.ContentAdapter.mIDS;
+import static com.example.android.materialdesigncodelab.CardContentChangaPendienteFragment.ContentAdapter.LENGTH;
+import static com.example.android.materialdesigncodelab.CardContentChangaPendienteFragment.ContentAdapter.mIDS;
 
 /**
  * Provides UI for the view with Cards.
  */
-public class CardContentPostulacionActivaFragment extends Fragment {
-
-
+public class CardContentChangaPendienteFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,8 +82,8 @@ public class CardContentPostulacionActivaFragment extends Fragment {
                     int nPos = LENGTH-getAdapterPosition()-1;
                     String idChanga = mIDS[nPos];
 
-                    Intent intent = new Intent(context, DetailPostulacionActivaActivity.class);
-                    intent.putExtra(DetailPostulacionActivaActivity.EXTRA_POSITION, idChanga);
+                    Intent intent = new Intent(context, DetailChangaPendienteActivity.class);
+                    intent.putExtra(DetailChangaPendienteActivity.EXTRA_POSITION, idChanga);
                     context.startActivity(intent);
                 }
             });
@@ -129,7 +127,7 @@ public class CardContentPostulacionActivaFragment extends Fragment {
 
         public static int LENGTH = 0;
 
-        public static  String[] mIDS;
+        public static String[] mIDS;
         private static String[] mChangasTitle;
         private static String[] mChangasDescription;
         private static Integer[] mChangasCategory;
@@ -143,8 +141,19 @@ public class CardContentPostulacionActivaFragment extends Fragment {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    currentIdInCard = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     LENGTH = 0;
+                    currentIdInCard = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
+                        Changa changa = changaSnapshot.getValue(Changa.class);
+                        if (changa.uid.equals(currentIdInCard) && changa.status.equals("enProceso")) {
+                            LENGTH++;
+                        }
+                    }
+                    mIDS = new String[LENGTH];
+                    mChangasTitle = new String[LENGTH];
+                    mChangasDescription = new String[LENGTH];
+                    mChangasCategory = new Integer[LENGTH];
+
                     List<String> ids = new ArrayList<String>();
                     List<String> titles = new ArrayList<String>();
                     List<String> descriptions = new ArrayList<String>();
@@ -152,23 +161,13 @@ public class CardContentPostulacionActivaFragment extends Fragment {
 
                     for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
                         Changa changa = changaSnapshot.getValue(Changa.class);
-                        if (changa.postulantes != null) {
-                            if (changa.postulantes.containsKey(currentIdInCard)) {
-                                ids.add(changa.id);
-                                titles.add(changa.title);
-                                descriptions.add(changa.body);
-                                categories.add(changa.category);
-                                LENGTH++;
-                            }
+                        if (changa.uid.equals(currentIdInCard) && changa.status.equals("enProceso")) {
+                            ids.add(changa.id);
+                            titles.add(changa.title);
+                            descriptions.add(changa.body);
+                            categories.add(changa.category);
                         }
                     }
-
-                    mIDS = new String[LENGTH];
-                    mChangasTitle = new String[LENGTH];
-                    mChangasDescription = new String[LENGTH];
-                    mChangasCategory = new Integer[LENGTH];
-
-
                     ids.toArray(mIDS);
                     titles.toArray(mChangasTitle);
                     descriptions.toArray(mChangasDescription);
@@ -184,7 +183,6 @@ public class CardContentPostulacionActivaFragment extends Fragment {
                 }
             };
             mChangasReference.addValueEventListener(changaListener);
-
 
             Resources resources = context.getResources();
             TypedArray a = resources.obtainTypedArray(R.array.changas_imgs);

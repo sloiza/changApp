@@ -169,7 +169,7 @@ public class AddChanga extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UserModel userM = dataSnapshot.getValue(UserModel.class);
-                Changa changa = new Changa(key, userId, userM.name, title, description, price, "", "", mAddCategory.getSelectedItemPosition());
+                Changa changa = new Changa(key, userId, userM.name, title, description, price, "", "", mAddCategory.getSelectedItemPosition(), "activa");
                 Map<String, Object> changaValues = changa.toMap();
 
                 Map<String, Object> childUpdates = new HashMap<>();

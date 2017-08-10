@@ -39,6 +39,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MensajesActivity"
+            android:theme="@style/NoActionBarTheme">
+        </activity>
+
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
@@ -74,6 +80,35 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
+        <activity
+            android:name=".DetailChangaPendienteActivity"
+            android:parentActivityName=".ChangasPendientesActivity"
+            android:theme="@style/NoActionBarTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".DetailChangaFinalizadaActivity"
+            android:parentActivityName=".ChangasPendientesActivity"
+            android:theme="@style/NoActionBarTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".DetailPostulacionActivaActivity"
+            android:parentActivityName=".PostulacionesActivasActivity"
+            android:theme="@style/NoActionBarTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+
         <activity
             android:name=".MainActivity"
             android:theme="@style/NoActionBarTheme" />
@@ -99,7 +134,21 @@
             android:label="@string/title_activity_perfil"
             android:theme="@style/AppTheme"></activity>
         <activity
+            android:name=".PerfilPostulanteActivity"
+            android:label="@string/title_activity_postulante_perfil"
+            android:theme="@style/AppTheme"></activity>
+        <activity
             android:name=".ChangasActivasActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/action_add_changa"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".ChangasPendientesActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/action_add_changa"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".ChangasFinalizadasActivity"
             android:parentActivityName=".MainActivity"
             android:label="@string/action_add_changa"
             android:theme="@style/AppTheme"></activity>
