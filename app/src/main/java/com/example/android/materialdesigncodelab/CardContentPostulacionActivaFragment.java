@@ -46,8 +46,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
-import static com.example.android.materialdesigncodelab.CardContentFragment.ContentAdapter.LENGTH;
-import static com.example.android.materialdesigncodelab.CardContentFragment.ContentAdapter.mIDS;
+import static com.example.android.materialdesigncodelab.CardContentPostulacionActivaFragment.ContentAdapter.LENGTH;
+import static com.example.android.materialdesigncodelab.CardContentPostulacionActivaFragment.ContentAdapter.mIDS;
 
 /**
  * Provides UI for the view with Cards.
@@ -84,8 +84,8 @@ public class CardContentPostulacionActivaFragment extends Fragment {
                     int nPos = LENGTH-getAdapterPosition()-1;
                     String idChanga = mIDS[nPos];
 
-                    Intent intent = new Intent(context, DetailActivity3.class);
-                    intent.putExtra(DetailActivity3.EXTRA_POSITION, idChanga);
+                    Intent intent = new Intent(context, DetailPostulacionActivaActivity.class);
+                    intent.putExtra(DetailPostulacionActivaActivity.EXTRA_POSITION, idChanga);
                     context.startActivity(intent);
                 }
             });
@@ -143,20 +143,8 @@ public class CardContentPostulacionActivaFragment extends Fragment {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    LENGTH = 0;
-                    for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
-                        Changa changa = changaSnapshot.getValue(Changa.class);
-
-                        if (changa.postulantes.containsKey(currentIdInCard)) {
-                            LENGTH++;
-                        }
-                    }
-                    mIDS = new String[LENGTH];
-                    mChangasTitle = new String[LENGTH];
-                    mChangasDescription = new String[LENGTH];
-                    mChangasCategory = new Integer[LENGTH];
                     currentIdInCard = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
+                    LENGTH = 0;
                     List<String> ids = new ArrayList<String>();
                     List<String> titles = new ArrayList<String>();
                     List<String> descriptions = new ArrayList<String>();
@@ -164,13 +152,23 @@ public class CardContentPostulacionActivaFragment extends Fragment {
 
                     for (DataSnapshot changaSnapshot: dataSnapshot.getChildren()) {
                         Changa changa = changaSnapshot.getValue(Changa.class);
-                        if (changa.postulantes.containsKey(currentIdInCard)) {
-                            ids.add(changa.id);
-                            titles.add(changa.title);
-                            descriptions.add(changa.body);
-                            categories.add(changa.category);
+                        if (changa.postulantes != null) {
+                            if (changa.postulantes.containsKey(currentIdInCard)) {
+                                ids.add(changa.id);
+                                titles.add(changa.title);
+                                descriptions.add(changa.body);
+                                categories.add(changa.category);
+                                LENGTH++;
+                            }
                         }
                     }
+
+                    mIDS = new String[LENGTH];
+                    mChangasTitle = new String[LENGTH];
+                    mChangasDescription = new String[LENGTH];
+                    mChangasCategory = new Integer[LENGTH];
+
+
                     ids.toArray(mIDS);
                     titles.toArray(mChangasTitle);
                     descriptions.toArray(mChangasDescription);
